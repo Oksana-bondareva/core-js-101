@@ -19,7 +19,7 @@
  *   '',  'bb'  => 'bb'
  */
 function concatenateStrings(value1, value2) {
-  return 'value1' + 'value2';
+  return value1 + value2;
 }
 
 
@@ -35,7 +35,8 @@ function concatenateStrings(value1, value2) {
  *   ''      => 0
  */
 function getStringLength(value) {
-   return Number(value).length;
+  const num = Number(value.length);
+  return num;
 }
 
 /**
