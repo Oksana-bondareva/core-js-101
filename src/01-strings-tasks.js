@@ -203,8 +203,9 @@ function extractEmails(str) {
  *             '└──────────┘\n'
  *
  */
-function getRectangleString(/* width, height */) {
-  throw new Error('Not implemented');
+function getRectangleString(width, height) {
+  const str = '─'.repeat(width - 2);
+  return `┌${str}┐\n${`│${' '.repeat(width - 2)}│\n`.repeat(height - 2)}└${str}┘\n`;
 }
 
 
@@ -224,8 +225,14 @@ function getRectangleString(/* width, height */) {
  *    => 'NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm'
  *
  */
-function encodeToRot13(/* str */) {
-  throw new Error('Not implemented');
+function encodeToRot13(str) {
+  const alpha = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+  const encoded = 'NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm';
+
+  return str.split('').map((ch) => {
+    const ind = alpha.indexOf(ch);
+    return ind === -1 ? ch : encoded[ind];
+  }).join('');
 }
 
 /**
@@ -270,8 +277,13 @@ function isString(value) {
  *   'Q♠' => 50
  *   'K♠' => 51
  */
-function getCardId(/* value */) {
-  throw new Error('Not implemented');
+function getCardId(value) {
+  const decks = '♣♦♥♠';
+  const numbers = 'A234567891JQK';
+  const deck = value[value.length - 1];
+  const num = value[0];
+
+  return decks.indexOf(deck) * 13 + numbers.indexOf(num);
 }
 
 
